@@ -1,0 +1,25 @@
+{
+  "name": "jncinet/laravel-wechat-notification-channel",
+  "description": "Laravel Wechat Notifications.",
+  "keywords": [
+    "wechat",
+    "notification",
+    "template"
+  ],
+  "homepage": "https://www.zhangye.org.cn",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "zhangye",
+      "email": "y@qilephp.com"
+    }
+  ],
+  "require": {
+    "overtrue/laravel-wechat": ">=5.1"
+  },
+  "autoload": {
+    "psr-4": {
+      "Jncinet\\Notifications\\": "src/"
+    }
+  }
+}
