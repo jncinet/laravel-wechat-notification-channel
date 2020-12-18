@@ -2,6 +2,8 @@
 
 namespace Jncinet\Notifications\Channels;
 
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Notifications\AnonymousNotifiable;
 use Illuminate\Notifications\Notification;
 
 class WeChatChannel
@@ -15,7 +17,17 @@ class WeChatChannel
      */
     public function send($notifiable, Notification $notification)
     {
-        if (! $openid = $notifiable->routeNotificationFor('WeChat')) {
+        if ($notifiable instanceof Model) {
+            $openid = $notifiable->routeNotificationFor('WeChat');
+        } elseif ($notifiable instanceof AnonymousNotifiable) {
+            if (isset($notifiable->routes['easy-wechat'])) {
+                $openid = $notifiable->routes['easy-wechat'];
+            } elseif (isset($notifiable->routes[__CLASS__])) {
+                $openid = $notifiable->routes[__CLASS__];
+            } else {
+                return;
+            }
+        } else {
             return;
         }
 
