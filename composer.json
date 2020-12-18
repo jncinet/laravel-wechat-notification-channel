@@ -21,5 +21,12 @@
     "psr-4": {
       "Jncinet\\Notifications\\": "src/"
     }
+  },
+  "extra": {
+    "laravel": {
+      "providers": [
+        "Jncinet\\Notifications\\WeChatChannelServiceProvider"
+      ]
+    }
   }
 }
